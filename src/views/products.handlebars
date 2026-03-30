@@ -1,0 +1,68 @@
+<h1>Productos</h1>
+
+<a href="/carts/69aa260f257ed50841857a0d">
+  <button>Ir al carrito</button>
+</a>
+
+<div id="product-list">
+
+{{#each products}}
+
+<div class="product">
+
+<h3>{{this.title}}</h3>
+
+<p>Precio: ${{this.price}}</p>
+
+<p>Categoría: {{this.category}}</p>
+
+<button onclick="addToCart('{{this._id}}')">
+Agregar al carrito
+</button>
+
+<a href="/products/{{this._id}}">
+<button>Ver detalles</button>
+</a>
+
+</div>
+
+{{/each}}
+
+</div>
+
+<style>
+#product-list{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+
+.product{
+  border:1px solid black;
+  padding:10px;
+}
+</style>
+
+<script>
+
+const cartId = "69aa260f257ed50841857a0d"
+
+function addToCart(pid){
+
+  console.log("CLICK OK", pid)
+
+  fetch(`/api/carts/${cartId}/products/${pid}`,{
+    method:"POST"
+  })
+  .then(res => res.json())
+  .then(data => {
+    console.log("RESPUESTA:", data)
+    alert("Producto agregado 🛒")
+  })
+  .catch(error => {
+    console.log("ERROR:", error)
+  })
+
+}
+
+</script>
