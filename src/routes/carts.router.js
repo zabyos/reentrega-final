@@ -91,7 +91,7 @@ router.delete("/:cid/products/:pid", async (req,res,next)=>{
   }
 })
 
-// actualizar todo el carrito (REQUERIDO)
+// actualizar todo el carrito
 router.put("/:cid", async (req,res,next)=>{
   try{
 
@@ -108,7 +108,7 @@ router.put("/:cid", async (req,res,next)=>{
   }
 })
 
-// actualizar cantidad de un producto (REQUERIDO)
+// actualizar cantidad de un producto
 router.put("/:cid/products/:pid", async (req,res,next)=>{
   try{
 
